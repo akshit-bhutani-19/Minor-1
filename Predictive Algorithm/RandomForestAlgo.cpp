@@ -19,10 +19,12 @@ int main()
     // Convert Y to arma::Row<size_t>
     Row<size_t> labels = conv_to<Row<size_t>>::from(Y);
 
-    // Split the data into training and testing sets
+    // Split the data into training and testing sets (80% for training, 20% for testing)
     mat X_train, X_test;
     rowvec Y_train, Y_test;
-    data::Split(X, Y, X_train, Y_train, X_test, Y_test, 0.8);  // 80% for training, 20% for testing
+    
+    // Using the correct Split function for both features and labels
+    data::Split(X, Y, X_train, Y_train, X_test, Y_test, 0.8);
 
     // Create the RandomForest object
     mlpack::RandomForest<> rf;
