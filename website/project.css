@@ -1,0 +1,7 @@
+.project{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8rem;
+    background-color: rgba(0, 26, 9, 0.646);
+}
