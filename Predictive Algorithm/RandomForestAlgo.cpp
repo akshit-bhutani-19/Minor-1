@@ -8,29 +8,31 @@ using namespace arma;
 
 int main()
 {
-    // Load the entire dataset
-    mat dataset; // This will hold both features and labels
-    data::Load("tiger_data.csv", dataset); // Replace with your file path
+    // Load the training dataset
+    mat X_train;
+    rowvec Y_train;
+    data::Load("training_data.csv", X_train, true);  // Assuming the last column is the label
+    Y_train = X_train.row(X_train.n_rows - 1);  // Last row as labels
+    X_train.shed_row(X_train.n_rows - 1);  // Remove the label row from features
 
-    // Separate the features (X) and labels (Y)
-    mat X = dataset.submat(0, 0, dataset.n_rows - 2, dataset.n_cols - 1); // All rows, all columns except the last one (features)
-    rowvec Y = dataset.row(dataset.n_rows - 1); // Last row as labels
+    // Convert Y_train to Row<size_t>
+    Row<size_t> labels_train = conv_to<Row<size_t>>::from(Y_train);
 
-    // Convert Y to arma::Row<size_t> (because mlpack expects the labels to be of type Row<size_t>)
-    Row<size_t> labels = conv_to<Row<size_t>>::from(Y);
+    // Load the testing dataset
+    mat X_test;
+    rowvec Y_test;
+    data::Load("testing_data.csv", X_test, true);  // Assuming the last column is the label
+    Y_test = X_test.row(X_test.n_rows - 1);  // Last row as labels
+    X_test.shed_row(X_test.n_rows - 1);  // Remove the label row from features
 
-    // Split the data into training and testing sets (80% for training, 20% for testing)
-    mat X_train, X_test;
-    Row<size_t> Y_train, Y_test;  // Use Row<size_t> for the labels
-
-    // Using the correct Split function for both features and labels
-    data::Split(X, labels, X_train, Y_train, X_test, Y_test, 0.8);
+    // Convert Y_test to Row<size_t>
+    Row<size_t> labels_test = conv_to<Row<size_t>>::from(Y_test);
 
     // Create the RandomForest object
     mlpack::RandomForest<> rf;
 
-    // Train the model (make sure Y_train is of type Row<size_t>)
-    rf.Train(X_train, Y_train, 10 /* numClasses */, 100 /* numTrees */);  // Update numClasses as needed
+    // Train the model
+    rf.Train(X_train, labels_train, 10 /* numClasses */, 100 /* numTrees */);  // Update numClasses as needed
 
     // Predict on the test data
     Row<size_t> predictions;
