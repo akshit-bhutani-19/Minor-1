@@ -5,3 +5,72 @@
     gap: 8rem;
     background-color: rgba(0, 26, 9, 0.646);
 }
+
+form {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 700px;
+    margin: 20px auto;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.form-row label {
+    font-size: 1.6rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-row input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1.6rem;
+}
+
+.prey-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.prey-item label {
+    font-size: 1.6rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.prey-item input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1.6rem;
+}
+
+button.btn {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    background-color: #015302;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    border: none;
+}
+
+button.btn:hover {
+    background-color: #017704;
+}

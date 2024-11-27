@@ -5,21 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="project.css">
     <title>Minor I</title>
 </head>
 <body>
     <header>
         <a href="#" class="logo">Tiger Prediction</a>
-
         <nav>
-            <a href="#" class="active"> Home</a>
-            <a href="#" >Services</a>
-            <a href="#" >Project Features</a>
+            <a href="#">Home</a>
+            <a href="#" class="active">Services</a>
+            <a href="#">Project Features</a>
         </nav>
     </header>
-    <section class="project">
-        <h2>Minor I Project</h2>
+
+    <section class="home">
+        <div class="project-content">
+            <h3 class="typing-text">Prediction Analysis</h3>
+            <p>Please enter the following values</p>
+            
+            <!-- Form for input values -->
+            <form id="wildlifeForm">
+                <div class="form-row">
+                    <label for="ndvi">NDVI:</label>
+                    <input type="number" id="ndvi" name="ndvi" step="0.01" required>
+
+                    <label for="nightlight">Nightlight:</label>
+                    <input type="number" id="nightlight" name="nightlight" step="0.01" required>
+
+                    <label for="area">Area (sq km):</label>
+                    <input type="number" id="area" name="area" required>
+                </div>
+
+                <h3>Prey Density (individuals per sq km)</h3>
+                <div class="prey-grid">
+                    <div class="prey-item">
+                        <label for="chital">Chital:</label>
+                        <input type="number" id="chital" name="chital" step="0.01" required>
+                    </div>
+                    <div class="prey-item">
+                        <label for="sambar">Sambar:</label>
+                        <input type="number" id="sambar" name="sambar" step="0.01" required>
+                    </div>
+                    <div class="prey-item">
+                        <label for="barkingDeer">Barking Deer:</label>
+                        <input type="number" id="barkingDeer" name="barkingDeer" step="0.01" required>
+                    </div>
+                    <div class="prey-item">
+                        <label for="wildPig">Wild Pig:</label>
+                        <input type="number" id="wildPig" name="wildPig" step="0.01" required>
+                    </div>
+                    <div class="prey-item">
+                        <label for="elephant">Elephant:</label>
+                        <input type="number" id="elephant" name="elephant" step="0.01" required>
+                    </div>
+                    <div class="prey-item">
+                        <label for="nilgai">Nilgai:</label>
+                        <input type="number" id="nilgai" name="nilgai" step="0.01" required>
+                    </div>
+                    <div class="prey-item">
+                        <label for="langur">Langur:</label>
+                        <input type="number" id="langur" name="langur" step="0.01" required>
+                    </div>
+                    <div class="prey-item">
+                        <label for="hogDeer">Hog Deer:</label>
+                        <input type="number" id="hogDeer" name="hogDeer" step="0.01" required>
+                    </div>
+                    <div class="prey-item">
+                        <label for="chinkara">Chinkara:</label>
+                        <input type="number" id="chinkara" name="chinkara" step="0.01" required>
+                    </div>
+                    <div class="prey-item">
+                        <label for="boar">Boar:</label>
+                        <input type="number" id="boar" name="boar" step="0.01" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">Analyse</button>
+            </form>
+        </div>
     </section>
-    
 </body>
 </html>
