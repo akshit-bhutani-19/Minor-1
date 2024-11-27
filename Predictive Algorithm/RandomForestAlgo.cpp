@@ -16,21 +16,21 @@ int main()
     mat X = dataset.submat(0, 0, dataset.n_rows - 2, dataset.n_cols - 1); // All rows, all columns except the last one (features)
     rowvec Y = dataset.row(dataset.n_rows - 1); // Last row as labels
 
-    // Convert Y to arma::Row<size_t>
+    // Convert Y to arma::Row<size_t> (because mlpack expects the labels to be of type Row<size_t>)
     Row<size_t> labels = conv_to<Row<size_t>>::from(Y);
 
     // Split the data into training and testing sets (80% for training, 20% for testing)
     mat X_train, X_test;
-    rowvec Y_train, Y_test;
-    
+    Row<size_t> Y_train, Y_test;  // Use Row<size_t> for the labels
+
     // Using the correct Split function for both features and labels
-    data::Split(X, Y, X_train, Y_train, X_test, Y_test, 0.8);
+    data::Split(X, labels, X_train, Y_train, X_test, Y_test, 0.8);
 
     // Create the RandomForest object
     mlpack::RandomForest<> rf;
 
-    // Train the model
-    rf.Train(X_train, conv_to<Row<size_t>>::from(Y_train), 10 /* numClasses */, 100 /* numTrees */);  // Update numClasses as needed
+    // Train the model (make sure Y_train is of type Row<size_t>)
+    rf.Train(X_train, Y_train, 10 /* numClasses */, 100 /* numTrees */);  // Update numClasses as needed
 
     // Predict on the test data
     Row<size_t> predictions;
