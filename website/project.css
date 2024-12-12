@@ -6,6 +6,10 @@
     background-color: rgba(0, 26, 9, 0.646);
 }
 
+.project-content {
+    margin-top: 50px; 
+}
+
 form {
     background-color: rgba(255, 255, 255, 0.1);
     padding: 20px;
@@ -37,6 +41,11 @@ form {
     font-size: 1.6rem;
 }
 
+#ndvi, #nightlight, #area {
+    width: 100px; /* Adjust the width to make it smaller */
+    height: 25px;
+}
+
 .prey-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -58,6 +67,10 @@ form {
     font-size: 1.6rem;
 }
 
+input[type="number"] {
+    height: 35px; /* Adjust for consistent height */
+}
+
 button.btn {
     margin-top: 20px;
     display: block;
@@ -73,4 +86,42 @@ button.btn {
 
 button.btn:hover {
     background-color: #017704;
+}
+
+dialog {
+    width: 50%;
+    border: none;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: rgba(0, 26, 9, 0.95);
+    color: white;
+    box-shadow: 0 0 15px #015302;
+}
+
+dialog h3 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    text-align: center;
+    color: #015302;
+}
+
+#output-content {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    color: white;
+}
+
+#close-dialog {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #015302;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#close-dialog:hover {
+    background-color: #013a02;
 }
