@@ -208,7 +208,6 @@ private:
 
 // Main Function to demonstrate Random Forest
 int main() {
-    // Example data (features and labels)
     vector<vector<double>> X = {
         {0.8262, 0.64316, 0.1172},   // Prey Avg, NDVI avg, Night light average
         {0.8519, 0.6445287, 0.1934},
@@ -230,11 +229,11 @@ int main() {
     vector<double> Y = {0.138473643, 0.179347826, 0.067667011, 0.03903866, 0.111801242, 0.194099379, 0.038818914, 0.036341111, 0.027634488, 0.03755456, 0.011304348, 0.032173913, 0.02141527, 0.053072626, 0.027214823, 0.047481181};
 
     // Create a Random Forest model
-    RandomForest rf(100 , 10 ,4); // 10 trees, max depth 3, min samples to split 2
+    RandomForest rf(100 , 10 ,4);
     rf.Train(X, Y);
 
     // Predict for a new sample
-    vector<double> newSample = {0.9543 , 0.62507264, 0.834934};
+    vector<double> newSample = {0.8262 , 0.62507264, 0.1135};
     double prediction = rf.Predict(newSample);
 
     // Output the prediction
