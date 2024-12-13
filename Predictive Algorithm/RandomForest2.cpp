@@ -238,7 +238,7 @@ int main() {
     double prediction = rf.Predict(newSample);
 
     // Output the prediction
-    cout << "Predicted class for sample {0.7, 0.6}: " << prediction << endl;
+    cout << "Predicted tiger density " << prediction << endl;
 
     return 0;
 }
