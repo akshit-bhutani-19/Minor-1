@@ -1,34 +1,48 @@
 // script.js
 
-document.getElementById("analyse-btn").addEventListener("click", function () {
+document.getElementById('wildlifeForm').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Prevent form from submitting normally
     // Gather form data
     const ndvi = document.getElementById("ndvi").value;
     const nightlight = document.getElementById("nightlight").value;
     const area = document.getElementById("area").value;
     const chital = document.getElementById("chital").value;
     const sambar = document.getElementById("sambar").value;
-    const barkingDeer = document.getElementById("barking-deer").value;
+    // const barkingDeer = document.getElementById("barking-deer").value;
 
-    // Prepare the output content
-    const output = `
-        <p>NDVI: ${ndvi}</p>
-        <p>Nightlight: ${nightlight}</p>
-        <p>Area (sq km): ${area}</p>
-        <p>Prey Density:</p>
-        <ul>
-            <li>Chital: ${chital}</li>
-            <li>Sambar: ${sambar}</li>
-            <li>Barking Deer: ${barkingDeer}</li>
-        </ul>
-    `;
+    //const apiUrl = 'http://3.89.225.74:8080/predict';
+    const apiUrl = 'https://hqsxh4rm20.execute-api.us-east-1.amazonaws.com/try/predict';
+    
+    const requestBody = {
+        prey: 500,
+        ndvi: 500,
+        nightlight: 500,
+        area: 500
+    };
 
-    // Display output in the dialog box
-    const outputContent = document.getElementById("output-content");
-    outputContent.innerHTML = output;
+    try {
+        console.log(1)
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestBody)
+        });
 
-    const dialog = document.getElementById("output-dialog");
-    dialog.showModal();
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log(result)
+        document.getElementById('output-content').textContent = JSON.stringify(result, null, 4);
+    } catch (error) {
+        document.getElementById('output-content').textContent = `Error: ${error.message}`;
+    }
 });
+
+
 
 // Close the dialog
 document.getElementById("close-dialog").addEventListener("click", function () {
