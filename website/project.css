@@ -98,10 +98,23 @@ dialog {
     width: 50%;
     border: none;
     border-radius: 8px;
+    position: fixed; /* Ensure the dialog box is fixed in the viewport */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust to ensure the center of the dialog aligns */
+    width: 50%;
+    border: none;
+    border-radius: 8px;
     padding: 20px;
     background-color: rgba(0, 26, 9, 0.95);
     color: white;
     box-shadow: 0 0 15px #015302;
+}
+
+
+dialog::backdrop {
+    backdrop-filter: blur(5px); /* Blurs the background */
+    background-color: rgba(0, 0, 0, 0.4); /* Optional: Adds a semi-transparent overlay */
 }
 
 dialog h3 {

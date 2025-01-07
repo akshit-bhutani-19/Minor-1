@@ -36,7 +36,7 @@ vector<vector<double>> transpose(const vector<vector<double>>& A) {
     return result;
 }
 
-// Function to invert a square matrix (using Gauss-Jordan elimination)
+// Function to invert a square matrix
 vector<vector<double>> invertMatrix(const vector<vector<double>>& A) {
     int n = A.size();
     vector<vector<double>> augmented(n, vector<double>(2 * n, 0));
@@ -49,7 +49,6 @@ vector<vector<double>> invertMatrix(const vector<vector<double>>& A) {
         augmented[i][n + i] = 1;
     }
 
-    // Perform Gauss-Jordan elimination
     for (int i = 0; i < n; i++) {
         // Make the diagonal element 1
         double diagElement = augmented[i][i];
@@ -111,7 +110,7 @@ vector<double> computeCoefficients(const vector<vector<double>>& X, const vector
 int main() {
     // Input data: X matrix (1st column is bias term)
     vector<vector<double>> X = {
-        {1, 0.8262, 0.64316, 0.1172},   // Bias, Prey Avg, NDVI avg, Night light average
+        {1, 0.8262, 0.64316, 0.1172},   // Bias, NDVI avg, Prey avg, Night light avg
         {1, 0.8519, 0.6445287, 0.1934},
         {1, 0.2800, 0.4854792, 0.14973},
         {1, 0.3315, 0.485479, 0.326068},

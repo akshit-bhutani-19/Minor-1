@@ -222,7 +222,7 @@ span{
 }
 
 .typing-text span::before{
-    content: "Minor I";
+    content: "Tiger Population";
     color: #015302;
     animation: words 20s infinite;
 }
@@ -232,7 +232,7 @@ span{
     background-color: rgba(0, 26, 9, 0.646);
     position: absolute;
     width: calc(100% + 8px);
-    height: 100%;
+    height: 50%;
     border-left: 3px solid black;
     right: -8;
     animation: cursor 0.6s infinite;
@@ -249,7 +249,7 @@ span{
         content: "Minor I ";
     } */
     41%, 60%{
-        content: "Predictive Analysis of Tiger";
+        content: "Predictive Analysis on Tiger Population";
     }
 }
 
